@@ -15,5 +15,3 @@ cout << "int divided by double: " << int_x / double_z << endl;
 
 }
 
-
-
