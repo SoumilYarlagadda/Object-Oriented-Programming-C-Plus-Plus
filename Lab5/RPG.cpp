@@ -101,3 +101,36 @@ bool RPG::isAlive() const
         return false;
     }
 }
+void RPG::attack(RPG *opponent) {
+    // Calculate damage based on this object's strength and the opponent's defense
+    int damage = this->strength - opponent->getDefense();
+
+    // Ensure damage is not negative
+    if (damage < 0) {
+        damage = 0;
+    }
+
+    // Calculate new health for the opponent after the attack
+    int new_health = opponent->getHealth() - damage;
+
+    // Update the opponent's health
+    opponent->updateHealth(new_health);
+
+    
+    for(int i = 0; i < SKILL_SIZE, i++;) { 
+        printf("Skill %i:  %s\n", i, skills[i].c_str());
+        int chosen_skill_index;
+        cout<< " Enter the chosen skill index: ";
+        cin>> chosen_skill_index;
+        string chosen_skill = skills[chosen_skill_index];
+        
+        printAction(chosen_skill, *opponent);
+
+
+
+    }
+
+
+
+
+}
