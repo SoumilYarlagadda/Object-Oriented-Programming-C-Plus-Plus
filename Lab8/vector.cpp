@@ -2,44 +2,64 @@
 #include<vector>
 using namespace std;
 
-void printMemVec(...){}
+void printMemVec(const vector<int> &vec)
+{
+    printf("Vector - each int is worth %lu bytes\n", sizeof(vec[0]));
+    for (size_t i = 0; i < vec.size(); i++)
+    {
+        printf("Value : %i at Memory Location: %p\n", vec[i], &vec[i]);
+    }
+}
 
-void IncVecBy10(...){}
-
-
-int main() {
-const int SIZE = 5;
-
-//create a vector called vec that can hold up to 5 elements.
-vector<int> vec;
-//use a for loop to populate vec with the values 100 to 104
-for(int i = 0; i < SIZE; i++){
-vec.push_back(100 + i);
+void IncVecBy10(vector<int> &vec){
+    for (size_t i = 0; i < vec.size(); i++) {
+        vec[i] += 10;
+        
+    }
 
 }
 
-printf("Before Increment----------------------\n");
+
+
+int main()
+{
+   // create a constant integer called SIZE that is of value 5
+    const int SIZE = 5;
+
+    // create a vector of integers called vec that can hold up to 5 elements
+    vector<int> vec;
+
+    // use a for loop to populate vec with the values 100 to 104
+    for (int i = 0; i < SIZE; i++)
+    {
+        vec.push_back(100 + i);
+    }
+
+printf("Before Increment------------\n");
     // call printMemVec(...) on vec
     printMemVec(vec);
 
     // call incBy10(...) on vec
-    IncVecBy10(vec); 
+    IncVecBy10(vec);
 
-    
-printf("After Increment-----------------------\n");
+printf("After Increment------------\n");
     // call printMemVec(...) on vec again to view the changes
     printMemVec(vec);
-printf("After Push----------------------\n");
+
+    printf("After Pop------------\n");
+    // remove last element of vec
+    vec.pop_back();
+    // call printMemVec(...) on vec again to view the changes
+    printMemVec(vec);
+
+    printf("After Push------------\n");
     // append 101 and 102 at the end of vec
     vec.push_back(101);
     vec.push_back(102);
-printf("After Pop------------------------\n");
     // call printMemVec(...) on vec again to view the changes
     printMemVec(vec);
 
-
-
-
-
+    return 0;
 }
+
 
